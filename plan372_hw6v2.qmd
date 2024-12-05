@@ -1,0 +1,50 @@
+---
+title: "Plan 372 hw6"
+format: html
+editor: visual
+---
+
+## 
+
+```{r}
+library(tidyverse)
+```
+
+```{r}
+tree_data <- read.csv("C:/Users/lucas/Documents/plan372/PLAN372-HW6/TS3_Raw_tree_data.csv")
+```
+
+```{r}
+tree_data <- tree_data |>
+  mutate(CityName = str_extract(City, "^[^,]+"),
+         StateAbbr = str_extract(City, "(?<=,\\s)[A-Z]{2}$"))
+```
+
+```{r}
+head(tree_data)
+```
+
+```{r}
+state_counts <- table(tree_data$StateAbbr)
+```
+
+```{r}
+print(state_counts)
+```
+
+```{r}
+barplot(state_counts, main = "Num Records by State", xlab = "State", ylab= "Num of Records")
+```
+
+```{r}
+tree_data_nc_sc <- tree_data |>
+  filter(StateAbbr %in% c("NC", "SC"))
+```
+
+```{r}
+cities_nc_sc <- unique(tree_data_nc_sc$CityName)
+```
+
+```{r}
+print(cities_nc_sc)
+```
