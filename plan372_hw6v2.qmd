@@ -72,3 +72,5 @@ largest_crown_genus <- genus_avg_canopy_diameter |>
 ```{r}
 print(paste("The genus with the largest crown diameter in NC and SC is", largest_crown_genus$Genus, "with an average diameter of", largest_crown_genus$AvgCdia, "meters."))
 ```
+
+Link to github repository: <https://github.com/LucasWMayo/Plan372_HW6>
