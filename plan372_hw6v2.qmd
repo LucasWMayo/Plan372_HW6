@@ -48,3 +48,18 @@ cities_nc_sc <- unique(tree_data_nc_sc$CityName)
 ```{r}
 print(cities_nc_sc)
 ```
+
+```{r}
+tree_data_nc_sc <- tree_data_nc_sc |>
+  mutate(Genus = str_extract(ScientificName, "^[^ ]+"))
+```
+
+```{r}
+colnames(tree_data_nc_sc)
+```
+
+```{r}
+genus_avg_canopy_diameter <- tree_data_nc_sc |>
+  group_by(Genus) |>
+  summarize(AvgCdia = mean(AvgCdia..m., na.rm = TRUE))
+```
